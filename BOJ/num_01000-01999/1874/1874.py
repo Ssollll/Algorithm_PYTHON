@@ -3,6 +3,7 @@ import sys
 N = int(sys.stdin.readline())
 stack = []
 answer = []
+
 flag = 1
 cnt = 1
 
