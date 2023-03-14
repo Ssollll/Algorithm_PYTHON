@@ -25,12 +25,12 @@ def BFS(graph, x, y, N) :
             if nx < 0 or ny < 0 or nx >= N or ny >= N :
                 continue
 
-            if graph[nx][ny] == 1 :
-                graph[nx][ny] = 0
+            if graph[nx][ny] == 1 : # 연결된 집이 1이라면 -> 같은 단지라면
+                graph[nx][ny] = 0 # 0으로 바꿈, 방문처리
                 dq.append((nx, ny))
-                cnt += 1
+                cnt += 1 # 단지 세대수 +1
 
-    return cnt
+    return cnt # 세대수 리턴
 
 sd = []
 for i in range(N) :
