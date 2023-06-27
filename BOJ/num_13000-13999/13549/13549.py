@@ -3,23 +3,19 @@ from collections import deque
 
 N, K = map(int, sys.stdin.readline().split())
 
-def BFS() :
-    graph = [-1] * 100001
+def BFS(N, K) :
+    graph = [int(10e9)] * 100001
     graph[N] = 0
-    dq = deque([N])
+    dq = deque([])
+    dq.append((0, N))
 
     while dq :
-        t = dq.popleft()
-        if t == K :
-            return graph[t]
-        
-        for i in (t + 1, t - 1, t * 2) :
-            if 0 <= i <= 100000 and graph[i] == -1 :
-                if i == t * 2 :
-                    graph[i] = graph[t]
-                    dq.appendleft(i)
-                else :
-                    graph[i] = graph[t] + 1
-                    dq.append(i)
+        v, t = dq.popleft()
+        for x in [(1, t + 1), (1, t - 1), (0, t * 2)] :
+            if 0 <= x[1] < 100001 :
+                if graph[x[1]] > v + x[0] :
+                    graph[x[1]] = v + x[0]
+                    dq.append([graph[x[1]], x[1]])
+    return graph[K]
 
-print(BFS())
+print(BFS(N, K))
