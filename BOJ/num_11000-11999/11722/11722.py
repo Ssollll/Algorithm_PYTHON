@@ -11,4 +11,4 @@ for i in range(1, A) :
         if num[i] < num[j] :
             dp[i] = max(dp[i], dp[j] + 1)
 
-print(max(dp)) 
+print(max(dp))
